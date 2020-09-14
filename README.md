@@ -79,26 +79,22 @@ git clone https://github.com/Nakebenihime/angular-springboot-project.git
 In order to build our application in an all-in-one **JAR** in Gradle using the Kotlin DSL (with a build.gradle.kts instead of build.gradle), we use the Shadow Gradle plugin.
 For more instructions about this plugin, visit [imperceptiblethoughts.com](https://imperceptiblethoughts.com/shadow/) official website.
 
-I added the following lines  in build.gradle.kts) :
-1.
-    ```
-    import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-    ```
-2.
-    ```
-    plugins {
-        kotlin("jvm") version "1.4.0"
+I added the following lines in build.gradle.kts) :
+```
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+...    
+
+plugins {
         id("com.github.johnrengelman.shadow") version "6.0.0"
+}
+...
+
+tasks.withType<ShadowJar>() {
+    manifest {
+        attributes["Main-Class"] = "userinterface.ApplicationKt"
     }
-    ```
-3.
-    ```
-    tasks.withType<ShadowJar>() {
-        manifest {
-            attributes["Main-Class"] = "userinterface.ApplicationKt"
-        }
-    }
-    ```
+}
+```
 
 build the application, using the following command:
 ```

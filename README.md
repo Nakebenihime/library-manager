@@ -70,6 +70,41 @@ java version "14.0.2" 2020-07-14
 Java(TM) SE Runtime Environment (build 14.0.2+12-46)
 Java HotSpot(TM) 64-Bit Server VM (build 14.0.2+12-46, mixed mode, sharing)
 ```
+
+## PROJECT STRUCTURE
+```
+|   .gitignore
+|   build.gradle.kts (similiar to build.gradle - but with Kotlin DSL)
+|   gradle.properties
+|   gradlew (shell script for executing the build with the wrapper)
+|   gradlew.bat (widows batch script for executing the build with the wrapper)
+|   library.json (JSON file used for export() function)
+|   local.properties
+|   README.md
+|   settings.gradle.kts
+|
++---diagrams (contains all the diagrams related to this project)
++---gradle
+|   +---wrapper (wrapper is a script that invokes a declared version of Gradle - running a Gradle project without having to follow a manual installation process)
+|           gradle-wrapper.jar (wrapper JAR file containing code for downloading the Gradle distribution)
+|           gradle-wrapper.properties (properties file responsible for configuring the Wrapper runtime behavior)
+|
++---src
+    +---main
+        +---kotlin
+            +---entities (contains business objects)
+            |       Book.kt
+            |       Library.kt
+            |
+            +---external (contains an inteface to export library books)
+            |       Export.kt
+            |
+            +---usecases (contains business actions)
+            |       Management.kt
+            |
+            +---userinterface (contains a command line user interface)
+                    Application.kt
+```
 ## GETTING STARTED
 clone the application, run the following command:
 ```
@@ -96,12 +131,12 @@ tasks.withType<ShadowJar>() {
 }
 ```
 
-build the application, using the following command:
+Build the application, using the following command:
 ```
 gradlew shadowJar
 ```
 
-run the application, using the following command:
+Run the application, using the following command:
 ```
 java -jar build/libs/LibraryManager-1.0-SNAPSHOT-all.jar
 ```

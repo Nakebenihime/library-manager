@@ -12,7 +12,7 @@ class Management(private val export: ExportLibrary) {
     private val library = Library()
 
     /**
-     * shows the books available in the library
+     * displays the available books in the library
      */
     fun showLibrary() {
         println("-- The library has the following books at its disposal:")
@@ -23,11 +23,11 @@ class Management(private val export: ExportLibrary) {
      * adds a book to the library
      */
     fun addBookToLibrary() {
-        println("-- Author : ")
+        println("-- Author: ")
         val author = readLine()!!
-        println("-- Title : ")
+        println("-- Title: ")
         val title = readLine()!!
-        println("-- Gender : ")
+        println("-- Gender: ")
         val genre = readLine()!!
         val book = Book(UUID.randomUUID(), author, title, genre)
         library.books.add(book)
@@ -50,11 +50,9 @@ class Management(private val export: ExportLibrary) {
     }
 
     /**
-     *
+     * exports the library
      */
     fun export() {
         export.exportLibrary(library)
     }
-
-
 }

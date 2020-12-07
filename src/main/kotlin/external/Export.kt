@@ -10,7 +10,7 @@ class Export : ExportLibrary {
     private val document = "library.json"
 
     /**
-     * library export in JSON format - first way of persisting data
+     * library export in JSON format
      */
     override fun exportLibrary(library: Library) {
         val gson = Gson()

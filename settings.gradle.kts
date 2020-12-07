@@ -1,2 +1,2 @@
-rootProject.name = "LibraryManager"
+rootProject.name = "library-manager"
 
